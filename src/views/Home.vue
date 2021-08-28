@@ -239,12 +239,48 @@ export default {
         background-color: #ffc221;
     }
 }
+.overlay-link{
+  transition: 0.3s ease-in-out;
+    &::after{
+            content: "";
+            position: absolute;
+            left: auto;
+            right: 0;
+            bottom: -2px;
+            height: 2px;
+            width: 0;
+            background: #0071DC;
+            transition: 0.3s ease-in-out;
+    }
+    &:hover{
+        color: #0071DC;
+        &::after{
+            width: 100%;
+            left: 0;
+            right: auto;
+        }
+    }
+}
+.title{
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 1.4em;
+  color: #252525;
+}
+.info{
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 1.86;
+  margin: 16px 0;
+  color: #696969;
+}
+
 
 
 .home{
     background-color: #F8F8F8;
 }
-
 
 .intro{
   padding: 110px 0 0;
@@ -366,7 +402,6 @@ export default {
       }
   }
 }
-
 
 .wrapper{
   background-color: #0071DC;

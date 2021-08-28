@@ -91,6 +91,7 @@ export default {
 
 <style lang="scss">
 .footer{
+    background-color: #F9F9FB;
     .container{
         justify-content: space-between;
         padding: 36px 0;
@@ -119,8 +120,25 @@ export default {
         a{
             color: #4e4e4e;
             transition: 0.3s ease-in-out;
+            position: relative;
+            &::after{
+                    content: "";
+                    position: absolute;
+                    left: auto;
+                    right: 0;
+                    bottom: -2px;
+                    height: 2px;
+                    width: 0;
+                    background: #0071DC;
+                    transition: 0.3s ease-in-out;
+            }
             &:hover{
                 color: #0071DC;
+                &::after{
+                    width: 100%;
+                    left: 0;
+                    right: auto;
+                }
             }
         }
     }
