@@ -26,7 +26,18 @@
 
 <script>
 export default {
-    name : "Header"
+    name : "Header",
+    methods : {
+        headerBG(){
+            window.addEventListener("scroll", function(){
+                var header = this.document.querySelector(".header");
+                header.classList.toggle("header__active", window.scrollY > 80)
+            })
+        }
+    },
+    mounted(){
+        this.headerBG()
+    }
 }
 </script>
 
@@ -35,9 +46,7 @@ export default {
     z-index: 3;
     position: fixed;
     width: 100%;
-    background: #fff;
     padding: 24px 0;
-    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.1);
     .container{
         justify-content: space-between;
     }
@@ -171,5 +180,8 @@ export default {
         color: white;
     }
 }
-
+.header__active{
+    background: #fff;
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.1);
+}
 </style>
