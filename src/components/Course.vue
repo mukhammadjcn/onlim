@@ -1,20 +1,20 @@
 <template>
     <div class="course">
         <div class="course__img">
-            <img src="https://picsum.photos/600" alt="">
+            <img :src="course.image" alt="">
         </div>
         <div class="course__info">
-            <div class="course__label course__beg">
-                <span>All Levels</span>
+            <div :class="course.turi == 'Pullik' ? 'course__beg' : 'course__all'" class="course__label">
+                <span>{{course.turi}}</span>
             </div>
-            <h2 class="course__title">
-                Time Management Mastery: Do Mo
-            </h2>
+            <router-link class="course__title" :to="`/courses/${course.id}`">
+                {{course.name}}
+            </router-link>
             <p class="course__owner">
-                Cikgu Siti Negro
+                {{course.author.full_name}}
             </p>
             <p class="course__price">
-                $29. <span>99</span>
+                {{course.price}} <span>so'm</span>
             </p>
             <div class="course__quality">
                 <div class="stars row">
@@ -32,7 +32,8 @@
 
 <script>
 export default {
-    name : "Course"
+    name : "Course",
+    props : ["course"]
 }
 </script>
 
@@ -73,11 +74,13 @@ export default {
         padding: 2px 10px;
     }
     &__title{
+        display: block;
         font-size: 15px;
         padding: 6px 0;
         height: 34px;
         overflow: hidden;
         font-weight: 500;
+        color: #252525;
     }
     &__owner{
         font-size: 14px;

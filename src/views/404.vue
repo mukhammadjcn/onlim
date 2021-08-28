@@ -1,7 +1,7 @@
 <template>
     <div class="notFound">
         <div class="container row">
-            <img src="../assets/404/page-404-image.png" alt="">
+            <img src="../assets/404/page-404-image.png" alt="" data-aos="zoom-in-up" data-aos-once="true"> 
             <h3>Kechirasiz ! Ushbu sahifani topa olmadik</h3>
             <p>Aftidan, bu joyda hech narsa topilmadi. Balki quyidagi havolalardan birini yoki qidirishni sinab ko'ring?</p>
             <a href="/">

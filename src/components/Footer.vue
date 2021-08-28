@@ -8,7 +8,7 @@
                 <span class="copyright">© 2020 Onlim.</span>
                 <a href="#" class="nav__link">Foydalanish shartlari</a>
                 <a href="#" class="nav__link">Xavfsizlik siyosati</a>
-                <a href="#" class="nav__link">Biz haqimizda</a>
+                <a href="/about" class="nav__link">Biz haqimizda</a>
             </div>
             <div class="social row">
                 <a href="/" class="social__link">

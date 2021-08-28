@@ -1,11 +1,11 @@
 <template>
     <div class="email">
         <div class="container row">
-            <div class="email__info">
-                <h2>Obuna bo'ling</h2>
+            <div class="email__info" data-aos="fade-right" data-aos-once="true">
                 <p>Bizning Xabarlarimizga</p>
+                <h2>Obuna bo'ling</h2>
             </div>
-            <form action="#">
+            <form action="#" data-aos="fade-left" data-aos-once="true">
                 <div class="email__form">
                     <input type="email" placeholder="Emailingiz ...">
                     <button>Obuna bo'lish</button>

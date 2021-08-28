@@ -10,8 +10,8 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M23.809 21.646l-6.205-6.205c1.167-1.605 1.857-3.579 1.857-5.711 0-5.365-4.365-9.73-9.731-9.73-5.365 0-9.73 4.365-9.73 9.73 0 5.366 4.365 9.73 9.73 9.73 2.034 0 3.923-.627 5.487-1.698l6.238 6.238 2.354-2.354zm-20.955-11.916c0-3.792 3.085-6.877 6.877-6.877s6.877 3.085 6.877 6.877-3.085 6.877-6.877 6.877c-3.793 0-6.877-3.085-6.877-6.877z"/></svg>
                 </div>
                 <div class="navbar">
-                    <a href="#" class="nav__link">Kurslar</a>
-                    <a href="#" class="nav__link">Biz haqimizda</a>
+                    <a href="/courses" class="nav__link">Kurslar</a>
+                    <a href="/about" class="nav__link">Biz haqimizda</a>
                 </div>
                 <div class="cart">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 19.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm-10.563-5l-2.937-7h16.812l-1.977 7h-11.898zm11.233-5h-11.162l1.259 3h9.056l.847-3zm5.635-5l-3.432 12h-12.597l.839 2h13.239l3.474-12h1.929l.743-2h-4.195z"/></svg>
@@ -31,7 +31,7 @@ export default {
         headerBG(){
             window.addEventListener("scroll", function(){
                 var header = this.document.querySelector(".header");
-                header.classList.toggle("header__active", window.scrollY > 80)
+                header.classList.toggle("header__active", window.scrollY > 10)
             })
         }
     },
@@ -43,6 +43,7 @@ export default {
 
 <style lang="scss">
 .header{
+    top: 0;
     transition: 0.3s ease-in-out;
     z-index: 3;
     position: fixed;
@@ -167,7 +168,7 @@ export default {
     }
 }
 .btn{
-    padding: 10px 024px;
+    padding: 10px 24px;
     border: none;
     border-radius: 6px;
     font-size: 14px;
@@ -184,6 +185,6 @@ export default {
 .header__active{
     background: #fff !important;
     box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.1);
-    transition: 0.3s ease-in-out;
+    transition: 0.2s ease-in-out;
 }
 </style>
