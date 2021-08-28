@@ -32,7 +32,7 @@ export default {
 
 <style lang="scss">
 .header{
-    z-index: 2;
+    z-index: 3;
     position: fixed;
     width: 100%;
     background: #fff;
