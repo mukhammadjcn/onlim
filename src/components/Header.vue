@@ -43,6 +43,7 @@ export default {
 
 <style lang="scss">
 .header{
+    transition: 0.3s ease-in-out;
     z-index: 3;
     position: fixed;
     width: 100%;
@@ -181,7 +182,8 @@ export default {
     }
 }
 .header__active{
-    background: #fff;
+    background: #fff !important;
     box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease-in-out;
 }
 </style>

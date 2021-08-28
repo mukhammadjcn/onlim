@@ -230,6 +230,16 @@ export default {
       }
   }
 }
+.btn-main{
+    background: #0071dc;
+    color: white;
+    padding: 12px 24px;
+    &:hover{
+        color: #031f42;
+        background-color: #ffc221;
+    }
+}
+
 
 .home{
     background-color: #F8F8F8;

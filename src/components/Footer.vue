@@ -5,10 +5,10 @@
                 <img src="../assets/logoo.png" alt="">
             </a>
             <div class="nav row">
-                <span class="copyright">© 2020 EduMall.</span>
-                <a href="#" class="nav__link">Terms of Use</a>
-                <a href="#" class="nav__link">Terms of Use</a>
-                <a href="#" class="nav__link">Terms of Use</a>
+                <span class="copyright">© 2020 Onlim.</span>
+                <a href="#" class="nav__link">Foydalanish shartlari</a>
+                <a href="#" class="nav__link">Xavfsizlik siyosati</a>
+                <a href="#" class="nav__link">Biz haqimizda</a>
             </div>
             <div class="social row">
                 <a href="/" class="social__link">
@@ -112,7 +112,7 @@ export default {
         }
     }
     .nav{
-        gap: 16px;
+        gap: 36px;
         font-size: 14px;
         font-weight: 500;
         color: #ababab;
