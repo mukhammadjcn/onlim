@@ -1,4 +1,6 @@
 <template>
+
+    <!-- Not Found Page -->
     <div class="notFound">
         <div class="container row">
             <img src="../assets/404/page-404-image.png" alt="" data-aos="zoom-in-up" data-aos-once="true"> 
@@ -10,13 +12,18 @@
             </a>
         </div>
     </div>
+
 </template>
+
+
 
 <style lang="scss">
 .notFound{
     .container{
         flex-direction: column;
         height: 100vh;
+        width: 100vw;
+        text-align: center;
         h3{
             font-size: 40px;
         }
@@ -55,4 +62,17 @@
     }
 }
 
+// Media for Phones
+@media(max-width:600px){
+    .notFound{
+        .container{
+            img{
+                width: 100%;
+            }
+            h3 {
+                font-size: 28px;
+            }
+        }
+    }
+}
 </style>

@@ -1,7 +1,11 @@
 <template>
+  <!-- Home.vue codes -->
   <div class="home">
+
+      <!-- Header -->
       <Header @showMenu="ChangeT($event)"/>
 
+      <!-- Login form displayes whien button clicked -->
       <div class="login" :class="isMenu ? 'loginActive' : ''">
         <div class="login__form">
           <h2 class="login__title">Kirish</h2>
@@ -25,6 +29,7 @@
         </div>
       </div>
 
+      <!-- Intro -->
       <div class="intro">
         <div class="container row">
           <div class="intro__detail" data-aos="fade-right" data-aos-once="true">
@@ -77,6 +82,7 @@
         </div>
       </div>
 
+      <!-- Wrapper -->
       <div class="wrapper">
         <div class="container row">
           <div class="wrapper__item row" data-aos="fade-right" data-aos-once="true">
@@ -106,6 +112,7 @@
         </div>
       </div>
 
+      <!-- Course Path -->
       <div class="coursePath">
         <div class="container row">
             <div class="coursePath__item1 row" data-aos="fade-up" data-aos-once="true">
@@ -134,6 +141,7 @@
         </div>  
       </div>
 
+      <!-- Courses -->
       <div class="popularCourses">
         <div class="container">
           <div class="popularCourses__header row">
@@ -153,8 +161,10 @@
         </div>
       </div>
 
+      <!-- Email -->
       <email />
 
+      <!-- Footer -->
       <Footer />
 
   </div>
@@ -249,6 +259,8 @@ export default {
 
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+
+// Some initial and reusalbe classes
 html{
     scroll-behavior: smooth;
 }
@@ -340,11 +352,13 @@ html{
 }
 
 
-
+// Home section
 .home{
     overflow: hidden;
     background-color: #F8F8F8;
 }
+
+// Intro
 .intro{
   padding: 110px 0 0;
   overflow: hidden;
@@ -465,6 +479,8 @@ html{
       }
   }
 }
+
+// Wrapper
 .wrapper{
   background-color: #0071DC;
   padding: 16px 0;
@@ -485,6 +501,8 @@ html{
     }
   }
 }
+
+// CoursePaTh
 .coursePath{
   padding: 36px 0;
   .container{
@@ -581,6 +599,8 @@ html{
     }
   }
 }
+
+// Popular Courses
 .popularCourses{
   padding: 36px 0;
   &__header{
@@ -617,6 +637,8 @@ html{
     }
   }
 }
+
+// Login Form
 .login{
     height: 100vh;
     width: 100%;
@@ -706,12 +728,19 @@ html{
       }
     }
 }
+
+// Login Active class
 .loginActive{
   top: 0;
 }
 
-@media (max-width:900px) {
+
+// Media codes for Tablets
+@media (max-width:900px){
+  // Home
   .home{
+
+    // Intro
     .intro{
       .container{
           flex-direction: column;
@@ -721,6 +750,8 @@ html{
         left: 30%;
       }
     }
+
+    // Warpper
     .wrapper{
         .container{
           flex-wrap: wrap;
@@ -731,6 +762,8 @@ html{
           height: 60px;
         }
     }
+
+    // CoursePath
     .coursePath{
       .container{
         flex-direction: column;
@@ -739,9 +772,13 @@ html{
         }
       }
     }
+
+    // Popular Courses
     .popularCourses__box .course {
         flex-basis: 30%;
     }
+
+    // Emails
     .email{
       height: auto;
       .container{
@@ -754,11 +791,10 @@ html{
   }
 }
 
-@media(max-width:776px){
 
-}
+// Media codes for Mobile screens
 @media (max-width:500px) {
-  .home .intro .container {
+    .home .intro .container {
         gap: 36px;
     }
     .intro__detail h2 {
@@ -786,7 +822,6 @@ html{
           padding: 24px;
         }
     }
-    
     .coursePath__item2 .coursePath__img{
         margin-right: 0 !important;
     }

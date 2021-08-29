@@ -1,7 +1,12 @@
 <template>
+
+  <!-- About Page -->
   <div class="about">
+
+    <!-- Header -->
     <Header @showMenu="ChangeT($event)"/>
 
+    <!-- Login -->
     <div class="login" :class="isMenu ? 'loginActive' : ''">
         <div class="login__form">
         <h2 class="login__title">Kirish</h2>
@@ -25,6 +30,7 @@
         </div>
     </div>
 
+    <!-- Intro -->
     <div class="intro">
       <div class="container row">
         <h1 data-aos="fade-up" data-aos-once="true" data-aos-duration="1000">Ta'lim orqali</h1>
@@ -36,6 +42,7 @@
       </div>
     </div>
 
+    <!-- Market Size -->
     <div class="marketSize">
       <div class="container">
         <div class="marketSize__info">
@@ -68,6 +75,7 @@
       </div>
     </div>
 
+    <!-- Special -->
     <div class="special">
       <div class="container">
         <h2 class="title">Shaxsiy <span class="underCover">Rivojlanish</span> uchun qulay joy</h2>
@@ -107,6 +115,7 @@
       <animation />
     </div>
 
+    <!-- Join Our team -->
     <div class="join">
       <div class="container">
         <h2 class="title">Kasbiy <span class="underCover">Rivojlanish</span> uchun qulay maskan</h2>
@@ -128,9 +137,13 @@
         <button class="btn btn-main">Bizning jomaga qo'shil</button>
       </div>
     </div>
+
+    <!-- Footer -->
     <Footer />
+
   </div>
 </template>
+
 
 <script>
 import Animation from '../components/Animation.vue'
@@ -162,6 +175,8 @@ export default {
     },
 }
 </script>
+
+
 
 <style lang="scss">
 .about{
@@ -373,6 +388,8 @@ export default {
   }
 }
 
+
+// Media for Tablets
 @media(max-width:900px){
     .about{
       .intro{
@@ -397,6 +414,7 @@ export default {
     }
 }
 
+// Media for Mini Tablets
 @media(max-width:720px){
   .about{
     .intro{
@@ -419,6 +437,7 @@ export default {
   }
 }
 
+// Media for Phones
 @media (max-width:500px) {
   .about .intro .container h1 {
       font-size: 26px;

@@ -1,7 +1,12 @@
 <template>
+
+    <!-- Single Page for Courses -->
     <div class="singlePage">
+
+        <!-- Header -->
         <Header  @showMenu="ChangeT($event)"/>
 
+        <!-- Login form display btn clicked -->
         <div class="login" :class="isMenu ? 'loginActive' : ''">
             <div class="login__form">
             <h2 class="login__title">Kirish</h2>
@@ -25,6 +30,7 @@
             </div>
         </div>
 
+        <!-- Wrapper bottom header, have Pagenation -->
         <div class="section__wrapper">
             <div class="container row">
                 <h2 class="title" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000">{{singleReport.data.name}}</h2>
@@ -37,10 +43,11 @@
             <animation />
         </div>
 
-
+        <!-- Main -->
         <div class="singlePage__main">
           <div class="container row">
 
+            <!-- Left side section (includes videos and information) -->
             <div class="singlePage__info" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000">
               <h1 class="title">{{singleReport.data.name}}</h1>
               <div class="singlePage__name row">
@@ -73,6 +80,7 @@
               </div>
             </div>
 
+            <!-- Right side wrapper (includes price) -->
             <div class="singlePage__details" data-aos="fade-left" data-aos-once="true" data-aos-duration="1000">
               <div class="kurs__narxi">
                 <span class="exactPrice">{{singleReport.data.price - singleReport.data.discount}} <span>so'm</span></span>
@@ -126,16 +134,19 @@
                 </div>
               </div>
               <div class="singlePage__buy row">
-                <button class="btn btn-main" @click="setCount(count + 1)">
+                <button class="btn btn-main" @click="ff()" :disabled="count == 1" :class="count == 1 ? 'btn-disabled' : ''">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 19.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm-10.563-5l-2.937-7h16.812l-1.977 7h-11.898zm11.233-5h-11.162l1.259 3h9.056l.847-3zm5.635-5l-3.432 12h-12.597l.839 2h13.239l3.474-12h1.929l.743-2h-4.195z"></path></svg> 
-                  <span>Sotib olish</span>
+                  <span>{{count==1 ? "Savatga qo'shildi" : "Savatga qo'shish"}}</span>
                 </button>
                 <a class="btn btn-main" href="/courses">Kurslarga qaytish</a>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- Footer -->
         <Footer/>
+
     </div>
 </template>
 
@@ -148,9 +159,9 @@ import Header from '../../components/Header.vue'
 export default {
   name: "SingleReport",
   components : {
-      Header,
-      Footer,
-    Animation,
+    Header,
+    Footer,
+    Animation
   },
   data(){
     return{
@@ -161,6 +172,9 @@ export default {
   computed: {
     count() {
       return store.count;
+    },
+    ff(){
+      return this.setCount(this.count + 1)
     }
   },
   mounted() {
@@ -199,6 +213,8 @@ export default {
 
 
 <style lang="scss">
+
+// All scss code for SinglePage.vue
 .singlePage{
   overflow: hidden;
     .container{
@@ -293,10 +309,15 @@ export default {
         margin-bottom: 12px;
         border-radius: 8px;
         h2{
+          flex-basis: 80%;
+          flex-grow: 1;
           font-size: 18px;
           line-height: 21px;
           font-weight: 400;
           color: rgba(17, 17, 17, 0.72);
+        }
+        svg{
+            flex-basis: 10%;
         }
       }
     }
@@ -342,6 +363,7 @@ export default {
         gap: 12px;
         svg path{
           fill: white;
+          transition: 0.3s ease-in-out;
         }
         &:hover{
           svg path {
@@ -354,7 +376,17 @@ export default {
       }
     }
 }
+// Button disabled properties
+.btn-disabled{
+  opacity: 0.6;
+  color: #031f42 !important;
+  background-color: #ffc221 !important;
+  svg path{
+    fill: #252525 !important;
+  }
+}
 
+// Media For Tablets
 @media (max-width:800px) {
   .singlePage .singlePage__main .container{
     flex-direction: column;
@@ -375,6 +407,7 @@ export default {
   }
 }
 
+// Media for Mobile screens
 @media (max-width:500px) {
   .singlePage__info .title{
     font-size: 28px;
@@ -386,6 +419,9 @@ export default {
   }
   .singlePage__selled{
     font-size: 16px;
+  }
+  .singlePage .section__wrapper{
+        height: 360px;
   }
 }
 </style>

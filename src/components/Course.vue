@@ -1,6 +1,6 @@
 <template>
     <div class="course">
-        <div class="course__img">
+        <div class="course__img" @click="pushCourse()">
             <img :src="course.image" alt="">
         </div>
         <div class="course__info">
@@ -33,7 +33,12 @@
 <script>
 export default {
     name : "Course",
-    props : ["course"]
+    props : ["course"],
+    methods : {
+        pushCourse(){
+            this.$router.push(`/courses/${this.course.id}`)
+        }
+    }
 }
 </script>
 

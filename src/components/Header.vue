@@ -1,9 +1,17 @@
 <template>
+
+    <!-- Header -->
     <div class="header">
+
+        <!-- Container -->
         <div class="container row">
+
+            <!-- Logo -->
             <a href="/" class="logo">
                 <img src="../assets/logoo.png" alt="">
             </a>
+
+            <!-- Nav -->
             <nav class="nav row">
                 <div class="search">
                     <input type="text" placeholder="Qidirish...">
@@ -24,9 +32,13 @@
                     <img src="../assets/intro/menu.svg" alt="">
                 </button>
             </nav>
+
         </div>
+
     </div>
+
 </template>
+
 
 <script>
 import { store, mutations } from "../views/store";
@@ -67,7 +79,11 @@ export default {
 }
 </script>
 
+
+
 <style lang="scss">
+
+// Some initial reused properties
 .hamburgerBtn{
     width: 28px;
     height: 28px;
@@ -227,6 +243,8 @@ export default {
     transition: 0.2s ease-in-out;
 }
 
+
+// Media for Mini Desktop or big Tablets
 @media(max-width:1000px){
     .header{
         .search{
@@ -235,6 +253,7 @@ export default {
     }
 }
 
+// Media for Big Phones
 @media(max-width:660px){
     .hamburgerBtn{
         display: block;
@@ -272,6 +291,7 @@ export default {
     }
 }
 
+// Media for phones
 @media (max-width:500px) {
     .header .nav{
         gap: 12px;

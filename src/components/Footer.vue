@@ -1,15 +1,24 @@
 <template>
+
+    <!-- Footer -->
     <div class="footer">
+
         <div class="container row">
+
+            <!-- Logo -->
             <a href="/" class="logo">
                 <img src="../assets/logoo.png" alt="">
             </a>
+
+            <!-- Nav -->
             <div class="nav row">
                 <span class="copyright">© 2020 Onlim.</span>
                 <a href="/copyright" class="nav__link">Foydalanish shartlari</a>
                 <a href="/copyright" class="nav__link">Maxfiylik siyosati</a>
                 <a href="/about" class="nav__link">Biz haqimizda</a>
             </div>
+
+            <!-- Socials links -->
             <div class="social row">
                 <a href="https://twitter.com/mukhammadjcn" target="_blank" class="social__link">
                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -79,9 +88,14 @@
                     </svg>
                 </a>
             </div>
+
         </div>
+
     </div>
+
 </template>
+
+
 
 <script>
 export default {
@@ -144,6 +158,8 @@ export default {
     }
 }
 
+
+// Media for Tablets
 @media (max-width:900px) {
     .footer{
         .container{
@@ -151,9 +167,5 @@ export default {
             gap: 36px;
         }
     }
-}
-
-@media (max-width:500px) {
-    
 }
 </style>

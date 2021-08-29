@@ -1,8 +1,12 @@
 <template>
+
+    <!-- Courses Page -->
     <div class="courses">
 
+        <!-- Header -->
         <Header @showMenu="ChangeT($event)"/>
 
+        <!-- Login Form -->
         <div class="login" :class="isMenu ? 'loginActive' : ''">
             <div class="login__form">
             <h2 class="login__title">Kirish</h2>
@@ -26,6 +30,7 @@
             </div>
         </div>
 
+        <!-- Section wrapper -->
         <div class="section__wrapper">
             <div class="container row">
                 <h2 class="title" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000">Kurslar</h2>
@@ -37,6 +42,7 @@
             <animation />
         </div>
 
+        <!-- Filter -->
         <div class="filter">
             <div class="container row">
                 <div class="courses__number info" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000">
@@ -134,7 +140,7 @@
             </div>
         </div>
 
-
+        <!-- Courses List -->
         <div class="courses__list">
             <div class="container row">
                 <course v-for="(item, index) in coursesArr" :key="index" :course="item" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000"/>
@@ -151,6 +157,7 @@
             </div>
         </div>
 
+        <!-- Footer -->
         <Footer />
 
     </div>
@@ -229,6 +236,8 @@ export default {
 </script>
 
 <style lang="scss">
+
+// Courses scss codes
 .courses{
     overflow: hidden;
     &__list{
@@ -362,6 +371,8 @@ export default {
         }
     }
 }
+
+// Some reused codes for styling
 .filter__active{
     height: 240px !important;
     padding: 32px 16px !important;
@@ -371,6 +382,7 @@ export default {
     transition: 0.3s ease-in-out;
 }
 .pagesNav{
+    z-index: 2;
     position: absolute;
     left: 36px;
     top: 24px;
@@ -401,16 +413,22 @@ export default {
     }
 }
 
+
+// Media for Tablets
 @media (max-width:1000px) {
     .courses__list .container .course{
         flex-basis: 30%;
     }
 }
+
+// Media for small Tablets
 @media (max-width:776px) {
     .courses__list .container .course{
         flex-basis: 45%;
     }
 }
+
+// Media for big Phones
 @media (max-width:680px) {
     .filter__active{
         flex-direction: column;
@@ -419,6 +437,8 @@ export default {
         padding: 32px !important;
     }
 }
+
+// Media For phones
 @media (max-width:500px) {
     .courses__list .container .course{
         flex-basis: 98%;

@@ -1,7 +1,12 @@
 <template>
+
+    <!-- CopyRight Page -->
     <div class="copyright">
+
+        <!-- Header  -->
         <Header @showMenu="ChangeT($event)"/>
 
+        <!-- Login -->
         <div class="login" :class="isMenu ? 'loginActive' : ''">
             <div class="login__form">
             <h2 class="login__title">Kirish</h2>
@@ -25,6 +30,7 @@
             </div>
         </div>
 
+        <!-- Wrapper -->
         <div class="section__wrapper">
             <div class="container row">
                 <h2 class="title" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000">Maxfiylik siyosati</h2>
@@ -36,7 +42,7 @@
             <animation />
         </div>
 
-
+        <!-- Copyright -->
         <div class="copyright__main">
             <div class="container">
                 <div class="copyright__section">
@@ -90,7 +96,9 @@
             </div>
         </div>
 
+        <!-- Footer -->
         <Footer />
+        
     </div>
 </template>
 
@@ -99,7 +107,7 @@ import Animation from '../components/Animation.vue'
 import Footer from '../components/Footer.vue'
 import Header from '../components/Header.vue'
 export default {
-  components: { Footer, Header, Animation },
+    components: { Footer, Header, Animation },
     name : "Copyright",
     data(){
         return{
@@ -122,6 +130,8 @@ export default {
 </script>
 
 <style lang="scss">
+
+// Only several lines )
 .copyright{
     &__main{
         padding: 64px 0;

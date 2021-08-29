@@ -1,4 +1,6 @@
 <template>
+
+    <!-- Animation Prallalex -->
     <div class="animation">
         <kinesis-container>
               <kinesis-element :strength="80" class="dots">
