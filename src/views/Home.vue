@@ -4,7 +4,7 @@
 
       <div class="login" :class="isMenu ? 'loginActive' : ''">
         <div class="login__form">
-          <h2 class="login__title">Login</h2>
+          <h2 class="login__title">Kirish</h2>
           <form action="">
             <label for="email">Username yoki Email</label>
             <input type="text" id="email" name="email" placeholder="Email...">
@@ -13,9 +13,9 @@
             <div class="row">
               <span class="row">
                   <input type="checkbox" id="Remember" name="Remember" placeholder="Remember...">
-                  <label for="Remember">Remember</label>
+                  <label for="Remember">Eslab qolish</label>
               </span>
-              <a href="" class="overlay-link">Forgot your password?</a>
+              <a href="" class="overlay-link">Parolni unutdingizmi?</a>
             </div>
             <button class="btn btn-main">Kirish</button>
           </form>
@@ -112,7 +112,7 @@
               <div class="coursePath__info">
                 <p>Yangi Sertifikatlar</p>
                 <h2>Onlim.uz ning mahsus kurslari</h2>
-                <button class="btn">Batafsil</button>
+                <a class="btn btn-main" href="/courses">Batafsil</a>
               </div>
               <div class="coursePath__img">
                 <img src="../assets/coursePath/path1.png" alt="">
@@ -122,7 +122,7 @@
               <div class="coursePath__info">
                 <p>Yangi To'plam</p>
                 <h2>Dasturlashni biz bilan o'rganing</h2>
-                <button class="btn">Kurslar</button>
+                <a class="btn btn-main" href="/courses">Kurslar</a>
               </div>
               <div class="coursePath__img">
                 <div class="">
@@ -141,10 +141,10 @@
               Talabalar orasida <span class="underCover">{{searchKey}}</span>
             </h2>
             <div class="popularCourses__list row">
-              <button @click="addActive2" :class="active2 ? 'activeBtn' : ''" class="btn">Ommabop</button>  
-              <button @click="addActive1" :class="active1 ? 'activeBtn' : ''" class="btn">Hammasi</button>
-              <button @click="addActive3" :class="active3 ? 'activeBtn' : ''" class="btn">Yangi</button>
-              <button @click="addActive4" :class="active4 ? 'activeBtn' : ''" class="btn">Frontend</button>
+              <button @click="addActive2" :class="active2 ? 'activeBtn' : ''" class="btn">Barchasi</button>  
+              <button @click="addActive1" :class="active1 ? 'activeBtn' : ''" class="btn">Biznes</button>
+              <button @click="addActive3" :class="active3 ? 'activeBtn' : ''" class="btn">Ta'lim</button>
+              <button @click="addActive4" :class="active4 ? 'activeBtn' : ''" class="btn">Dasturlash</button>
             </div>
           </div>
           <div class="popularCourses__box row">
@@ -174,9 +174,10 @@ export default {
       active2 : false,
       active3 : false,
       active4 : false,
-      searchKey : 'Hammasi',
+      searchKey : 'Biznes',
       isMenu : false,
-      coursesArr : []
+      coursesArr : [],
+      category :'?'
     }
   },
   components: {
@@ -202,31 +203,39 @@ export default {
       this.active2 = false
       this.active3 = false
       this.active4 = false
-      this.searchKey = "Hammasi"
+      this.searchKey = "Biznes"
+      this.category = '?category=1&'
+      this.getCourse()
     },
     addActive2(){
       this.active1 = false
       this.active2 = true
       this.active3 = false
       this.active4 = false
-      this.searchKey = "Ommabop"
+      this.searchKey = "Barchasi"
+      this.category = '?'
+      this.getCourse()
     },
     addActive3(){
       this.active1 = false
       this.active2 = false
       this.active3 = true
       this.active4 = false
-      this.searchKey = "Yangi"
+      this.searchKey = "Ta'lim"
+      this.category = '?category=2&'
+      this.getCourse()
     },
     addActive4(){
       this.active1 = false
       this.active2 = false
       this.active3 = false
       this.active4 = true
-      this.searchKey = "Frontend"
+      this.searchKey = "Dasturlash"
+      this.category = '?category=3&'
+      this.getCourse()
     },
     getCourse(){
-      fetch(`https://backend.eduon.uz/api-web/get-course/?page=1`)
+      fetch(`https://backend.eduon.uz/api-web/get-course/${this.category}page=1`)
         .then(response => response.json())
         .then(data => this.coursesArr = data.results)
     }
@@ -553,7 +562,8 @@ html{
       padding: 16px 0px;
       color: #252525;
     }
-    button{
+    a{
+      display: inline-block;
       background-color: #0071DC;
       color: white;
       &:hover{

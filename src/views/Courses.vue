@@ -5,7 +5,7 @@
 
         <div class="login" :class="isMenu ? 'loginActive' : ''">
             <div class="login__form">
-            <h2 class="login__title">Login</h2>
+            <h2 class="login__title">Kirish</h2>
             <form action="">
                 <label for="email">Username yoki Email</label>
                 <input type="text" id="email" name="email" placeholder="Email...">
@@ -14,9 +14,9 @@
                 <div class="row">
                 <span class="row">
                     <input type="checkbox" id="Remember" name="Remember" placeholder="Remember...">
-                    <label for="Remember">Remember</label>
+                    <label for="Remember">Eslab qolish</label>
                 </span>
-                <a href="" class="overlay-link">Forgot your password?</a>
+                <a href="" class="overlay-link">Parolni unutdingzimi?</a>
                 </div>
                 <button class="btn btn-main">Kirish</button>
             </form>
@@ -40,7 +40,7 @@
         <div class="filter">
             <div class="container row">
                 <div class="courses__number info" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000">
-                    We found <b>{{coursesArr.length}}</b> courses available for you
+                    Siz uchun <b>{{coursesArr.length}}</b> ta kurs topildi 
                 </div>
                 <button @click="showFilter()" class="courses__filter row btn" data-aos="fade-left" data-aos-once="true" data-aos-duration="1000">
                     <span class="filterIcon" >

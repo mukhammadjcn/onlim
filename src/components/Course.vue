@@ -100,4 +100,10 @@ export default {
         }
     }
 }
+
+@media (max-width:500px) {
+    .course__img{
+        height: 220px;
+    }
+}
 </style>
