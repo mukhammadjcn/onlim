@@ -2,6 +2,29 @@
   <div class="home">
       <Header />
 
+      <div class="login">
+        <div class="login__form">
+          <h2 class="login__title">Login</h2>
+          <form action="">
+            <label for="email">Username yoki Email</label>
+            <input type="text" id="email" name="email" placeholder="Email...">
+            <label for="Password">Password</label>
+            <input type="text" id="Password" name="Password" placeholder="Password...">
+            <div class="row">
+              <span class="row">
+                  <input type="checkbox" id="Remember" name="Remember" placeholder="Remember...">
+                  <label for="Remember">Remember</label>
+              </span>
+              <a href="" class="overlay-link">Forgot your password?</a>
+            </div>
+            <button class="btn btn-main">Kirish</button>
+          </form>
+          <button class="cancelBtn" type="submit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg>
+          </button>
+        </div>
+      </div>
+
       <div class="intro">
         <div class="container row">
           <div class="intro__detail" data-aos="fade-right" data-aos-once="true">
@@ -420,7 +443,6 @@ html{
       }
   }
 }
-
 .wrapper{
   background-color: #0071DC;
   padding: 16px 0;
@@ -441,7 +463,6 @@ html{
     }
   }
 }
-
 .coursePath{
   padding: 36px 0;
   .container{
@@ -537,7 +558,6 @@ html{
     }
   }
 }
-
 .popularCourses{
   padding: 36px 0;
   &__header{
@@ -573,5 +593,93 @@ html{
       flex-basis: 23%;
     }
   }
+}
+.login{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+    background: #00000063;
+    position: absolute;
+    top: -100%;
+    left: 0;
+    &__title{
+      text-align: center;
+      margin-bottom: 24px;
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+    &__form{
+      position: relative;
+      padding: 36px;
+      width: 480px;
+      background: white;
+      border-radius: 8px;
+      form{
+        display: flex;
+        flex-direction: column;
+        input{
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0em;
+            border: 1px solid rgba(0, 0, 0, 0);
+            padding: 14px;
+            outline: none;
+            margin: 8px 0 16px;
+            border-radius: 8px;
+            background: #F8F8F8;
+            &::placeholder{
+              font-size: 14px;
+              font-weight: 500;
+              letter-spacing: 0em;
+            }
+            &:focus{
+              border-color: #0071DC;
+            }
+        }
+        label{
+          font-size: 13px;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          margin: 0 6px;
+          color: #696969;
+        }
+        & > .row{
+          justify-content: space-between;
+          & > .row{
+            align-items: flex-start;
+          }
+          input{
+            margin: 0 6px 0 0;
+            height: 16px;
+            width: 16px;
+          }
+          a{
+            position: relative;
+            color: rgb(83, 83, 83);
+            &:hover{
+              color: #0063c0;
+            }
+          }
+        }
+        .btn{
+          margin: 36px 0 0;
+        } 
+      }
+    }
+    .cancelBtn{
+      position: absolute;
+      top: -48px;
+      right: 0;
+      background: none;
+      border: none;
+      outline: none;
+      svg path{
+        fill: white;
+      }
+    }
 }
 </style>

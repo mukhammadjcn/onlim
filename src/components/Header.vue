@@ -18,7 +18,7 @@
                     <span><i>0</i></span>
                 </div>
                 <span class="nav__divider"></span>
-                <button class="btn">Kirish</button>
+                <button class="btn" $emit='showLogin'>Kirish</button>
             </nav>
         </div>
     </div>
