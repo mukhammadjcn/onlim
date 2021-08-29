@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-      <Header />
+      <Header @showMenu="ChangeT($event)"/>
 
-      <div class="login">
+      <div class="login" :class="isMenu ? 'loginActive' : ''">
         <div class="login__form">
           <h2 class="login__title">Login</h2>
           <form action="">
@@ -19,7 +19,7 @@
             </div>
             <button class="btn btn-main">Kirish</button>
           </form>
-          <button class="cancelBtn" type="submit">
+          <button class="cancelBtn" type="submit" @click="closeMenu()">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg>
           </button>
         </div>
@@ -175,6 +175,7 @@ export default {
       active3 : false,
       active4 : false,
       searchKey : 'Hammasi',
+      isMenu : false,
       coursesArr : []
     }
   },
@@ -185,6 +186,17 @@ export default {
     Footer
   },
   methods : {
+    ChangeT(title)
+    {
+      this.isMenu=title;
+      if(this.isMenu){
+        document.body.style.overflowY = 'hidden'
+      }
+    },
+    closeMenu(){
+      this.isMenu = false
+      document.body.style.overflowY = 'initial'
+    },
     addActive1(){
       this.active1 = true
       this.active2 = false
@@ -321,6 +333,7 @@ html{
 
 
 .home{
+    overflow: hidden;
     background-color: #F8F8F8;
 }
 .intro{
@@ -602,8 +615,9 @@ html{
     justify-content: center;
     z-index: 4;
     background: #00000063;
-    position: absolute;
-    top: -100%;
+    position: fixed;
+    top: -200%;
+    transition: 0.3s ease-in-out;
     left: 0;
     &__title{
       text-align: center;
@@ -680,6 +694,121 @@ html{
       svg path{
         fill: white;
       }
+    }
+}
+.loginActive{
+  top: 0;
+}
+
+@media (max-width:900px) {
+  .home{
+    .intro{
+      .container{
+          flex-direction: column;
+          gap: 36px;
+      }
+      &__feedback{
+        left: 30%;
+      }
+    }
+    .wrapper{
+        .container{
+          flex-wrap: wrap;
+          gap: 20px;
+        }
+        &__item{
+          flex-basis: 40%;
+          height: 60px;
+        }
+    }
+    .coursePath{
+      .container{
+        flex-direction: column;
+        & > div{
+          width: 90%;
+        }
+      }
+    }
+    .popularCourses__box .course {
+        flex-basis: 30%;
+    }
+    .email{
+      height: auto;
+      .container{
+        flex-direction: column;
+        padding: 24px 86px;
+        text-align: center;
+        gap: 16px;
+      }
+    }
+  }
+}
+
+@media(max-width:776px){
+
+}
+@media (max-width:500px) {
+  .home .intro .container {
+        gap: 36px;
+    }
+    .intro__detail h2 {
+        font-size: 32px;
+    }
+    .home .intro__feedback {
+        left: 50% !important;
+        width: 90%;
+    }
+    .home .wrapper__item {
+        flex-basis: 100%;
+        height: 60px;
+    }
+    .wrapper__item p {
+        font-size: 10px !important;
+    }
+    .wrapper__item{
+        gap: 10px !important;
+        flex-basis: 45% !important;
+    }
+    .home .coursePath .container > div{
+        flex-direction: column;
+        padding-bottom: 24px;
+        .coursePath__info{
+          padding: 24px;
+        }
+    }
+    
+    .coursePath__item2 .coursePath__img{
+        margin-right: 0 !important;
+    }
+    .popularCourses__list{
+        display: none !important;
+    }
+    .popularCourses__title{
+        font-size: 20px !important;
+    }
+    .home .popularCourses__box .course{
+        flex-basis: 95% !important;
+    }
+    .home .email .container{
+        padding: 24px 0 !important;
+    }
+    .email__info p{
+        font-size: 24px;
+    }
+    .email__info h2{
+        font-size: 26px;
+    }
+    .login__form{
+      width: 90%;
+    }
+    .pagesNav{
+      left: 0 !important;
+    }
+    .login__form form > .row{
+      flex-direction: column;
+      align-items: end;
+      gap: 8px;
+      margin-top: 16px;
     }
 }
 </style>

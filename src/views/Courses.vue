@@ -1,9 +1,32 @@
 <template>
     <div class="courses">
 
-        <Header />
+        <Header @showMenu="ChangeT($event)"/>
 
-        <div class="courses__top">
+        <div class="login" :class="isMenu ? 'loginActive' : ''">
+            <div class="login__form">
+            <h2 class="login__title">Login</h2>
+            <form action="">
+                <label for="email">Username yoki Email</label>
+                <input type="text" id="email" name="email" placeholder="Email...">
+                <label for="Password">Password</label>
+                <input type="text" id="Password" name="Password" placeholder="Password...">
+                <div class="row">
+                <span class="row">
+                    <input type="checkbox" id="Remember" name="Remember" placeholder="Remember...">
+                    <label for="Remember">Remember</label>
+                </span>
+                <a href="" class="overlay-link">Forgot your password?</a>
+                </div>
+                <button class="btn btn-main">Kirish</button>
+            </form>
+            <button class="cancelBtn" type="submit" @click="closeMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg>
+            </button>
+            </div>
+        </div>
+
+        <div class="section__wrapper">
             <div class="container row">
                 <h2 class="title" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000">Kurslar</h2>
                 <div class="pagesNav" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000">
@@ -151,10 +174,21 @@ export default {
         return{
             isFilter : false,
             coursesArr : [],
-            page : 1
+            page : 1,
+            isMenu : false,
         }
     },
     methods : {
+        ChangeT(title){
+            this.isMenu=title;
+            if(this.isMenu){
+                document.body.style.overflowY = 'hidden'
+            }
+        },
+        closeMenu(){
+        this.isMenu = false
+        document.body.style.overflowY = 'initial'
+        },
         showFilter(){
             this.isFilter = !this.isFilter
         },
@@ -196,19 +230,7 @@ export default {
 
 <style lang="scss">
 .courses{
-    &__top{
-        overflow: hidden;
-        position: relative;
-        padding: 0;
-        margin-top: 110px;
-        height: 200px;
-        background-color: #F8F8F8;
-        .container{
-            //z-index: 2;
-            position: relative;
-            height: 100%;
-        }
-    }
+    overflow: hidden;
     &__list{
         padding: 48px 0 64px;
         .container{
@@ -362,6 +384,49 @@ export default {
             &::after{
                 background-color: #252525;
             }
+        }
+    }
+}
+.section__wrapper{
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+    margin-top: 110px;
+    height: 200px;
+    background-color: #F8F8F8;
+    .container{
+        //z-index: 2;
+        position: relative;
+        height: 100%;
+    }
+}
+
+@media (max-width:1000px) {
+    .courses__list .container .course{
+        flex-basis: 30%;
+    }
+}
+@media (max-width:776px) {
+    .courses__list .container .course{
+        flex-basis: 45%;
+    }
+}
+@media (max-width:680px) {
+    .filter__active{
+        flex-direction: column;
+        height: 640px !important;
+        align-items: flex-start !important;
+        padding: 32px !important;
+    }
+}
+@media (max-width:500px) {
+    .courses__list .container .course{
+        flex-basis: 98%;
+    }
+    .filter{
+        .container{
+            flex-direction: column;
+            align-items: flex-end;
         }
     }
 }

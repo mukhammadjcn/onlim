@@ -18,5 +18,9 @@
   margin: auto;
 }
 
-
+@media(max-width: 1200px){
+  .container{
+    max-width: 90%;
+  }
+}
 </style>

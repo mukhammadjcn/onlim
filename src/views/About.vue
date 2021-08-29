@@ -1,6 +1,30 @@
 <template>
   <div class="about">
-    <Header />
+    <Header @showMenu="ChangeT($event)"/>
+
+    <div class="login" :class="isMenu ? 'loginActive' : ''">
+        <div class="login__form">
+        <h2 class="login__title">Login</h2>
+        <form action="">
+            <label for="email">Username yoki Email</label>
+            <input type="text" id="email" name="email" placeholder="Email...">
+            <label for="Password">Password</label>
+            <input type="text" id="Password" name="Password" placeholder="Password...">
+            <div class="row">
+            <span class="row">
+                <input type="checkbox" id="Remember" name="Remember" placeholder="Remember...">
+                <label for="Remember">Remember</label>
+            </span>
+            <a href="" class="overlay-link">Forgot your password?</a>
+            </div>
+            <button class="btn btn-main">Kirish</button>
+        </form>
+        <button class="cancelBtn" type="submit" @click="closeMenu()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg>
+        </button>
+        </div>
+    </div>
+
     <div class="intro">
       <div class="container row">
         <h1 data-aos="fade-up" data-aos-once="true" data-aos-duration="1000">Hayotingzni yaxshilang !</h1>
@@ -118,12 +142,30 @@ export default {
     Header,
     Footer,
     Animation,
-  }
+  },
+  data(){
+        return{
+            isMenu : false,
+        }
+    },
+    methods : {
+        ChangeT(title){
+            this.isMenu=title;
+            if(this.isMenu){
+                document.body.style.overflowY = 'hidden'
+            }
+        },
+        closeMenu(){
+        this.isMenu = false
+        document.body.style.overflowY = 'initial'
+        },
+    },
 }
 </script>
 
 <style lang="scss">
 .about{
+  overflow: hidden;
   .header{
     top: 0;
     background: #ffffffab;
@@ -285,6 +327,7 @@ export default {
     text-align: center;
     &__images{
       & > div{
+        height: 320px;
         border-radius: 8px;
         overflow: hidden;
         &:hover{
@@ -327,6 +370,84 @@ export default {
               color: #fff;
           }
       }
+  }
+}
+
+@media(max-width:900px){
+    .about{
+      .intro{
+        .container{
+          h1{
+            font-size: 56px;
+          }
+        }
+      }
+      .marketSize{
+        &__info{
+          width: 90%;
+        }
+        &__details{
+          flex-wrap: wrap;
+          row-gap: 12px;
+        }
+        &__item{
+          flex-basis: 48%;
+        }
+      }
+    }
+}
+
+@media(max-width:720px){
+  .about{
+    .intro{
+      .container{
+        h1{
+          font-size: 48px;
+        }
+        p{
+          font-size: 36px;
+        }
+      }
+    }
+    .special__list{
+      flex-direction: column;
+      row-gap: 24px;
+      & > div{
+        width: 90%;
+      }
+    }
+  }
+}
+
+@media (max-width:500px) {
+  .about .intro .container h1 {
+      font-size: 26px;
+  }
+  .about .intro .container p{
+    font-size: 20px;
+  }
+  .about .marketSize__info span{
+    font-size: 13px;
+  }
+  .about .marketSize__info h1{
+    font-size: 22px;
+  }
+  .about .marketSize__info p{
+    font-size: 14px;
+  }
+  .about .marketSize__item{
+    flex-basis: 100%;
+  }
+  .title{
+    font-size: 28px;
+  }
+  .join{
+    &__images{
+      & > div{
+        height: 240px !important;
+      }
+      gap: 16px !important;
+    }
   }
 }
 </style>

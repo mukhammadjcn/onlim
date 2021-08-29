@@ -24,7 +24,7 @@ export default {
 <style lang="scss">
 .email{
     background-color: #E6EDF6;
-    height: 170px;
+    //height: 170px;
     .container{
         padding: 36px 164px;
         justify-content: space-between;

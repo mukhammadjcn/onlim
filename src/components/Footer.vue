@@ -6,8 +6,8 @@
             </a>
             <div class="nav row">
                 <span class="copyright">© 2020 Onlim.</span>
-                <a href="#" class="nav__link">Foydalanish shartlari</a>
-                <a href="#" class="nav__link">Xavfsizlik siyosati</a>
+                <a href="/copyright" class="nav__link">Foydalanish shartlari</a>
+                <a href="/copyright" class="nav__link">Maxfiylik siyosati</a>
                 <a href="/about" class="nav__link">Biz haqimizda</a>
             </div>
             <div class="social row">
@@ -142,5 +142,18 @@ export default {
             }
         }
     }
+}
+
+@media (max-width:900px) {
+    .footer{
+        .container{
+            flex-direction: column;
+            gap: 36px;
+        }
+    }
+}
+
+@media (max-width:500px) {
+    
 }
 </style>

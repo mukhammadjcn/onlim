@@ -142,6 +142,7 @@ export default {
 
 <style lang="scss">
 .singlePage{
+  overflow: hidden;
     .container{
       align-items: flex-start;
       justify-content: space-between;
@@ -287,6 +288,40 @@ export default {
         width: 90%;
       }
     }
+}
+
+@media (max-width:800px) {
+  .singlePage .singlePage__main .container{
+    flex-direction: column;
+    row-gap: 24px;
+    align-items: center;
+  }
+  .singlePage__info{
+    width: 100%;
+  }
+  .singlePage__details{
+    width: 90%;
+  }
+  .singlePage .footer .container{
+    align-items: center;
+  }
+  .singlePage .header .container{
+    align-items: center;
+  }
+}
+
+@media (max-width:500px) {
+  .singlePage__info .title{
+    font-size: 28px;
+  }
+  .singlePage__name{
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 28px 0;
+  }
+  .singlePage__selled{
+    font-size: 16px;
+  }
 }
 </style>
 
