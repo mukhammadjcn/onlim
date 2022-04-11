@@ -311,7 +311,9 @@ export default {
       this.isFilter = !this.isFilter;
     },
     getCourse() {
-      fetch(`https://api.npoint.io/3f55551c589b72fb8eba`)
+      fetch(
+        `https://cors-anywhere.herokuapp.com/https://backend.eduon.uz/api-web/get-course/?page=${this.page}`
+      )
         .then((response) => response.json())
         .then((data) => (this.coursesArr = data.data));
     },

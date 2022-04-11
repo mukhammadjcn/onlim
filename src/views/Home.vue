@@ -487,7 +487,9 @@ export default {
       this.getCourse();
     },
     getCourse() {
-      fetch(`https://api.npoint.io/3f55551c589b72fb8eba`)
+      fetch(
+        `https://cors-anywhere.herokuapp.com/https://backend.eduon.uz/api-web/get-course/${this.category}page=1`
+      )
         .then((response) => response.json())
         .then((data) => (this.coursesArr = data.data));
     },
