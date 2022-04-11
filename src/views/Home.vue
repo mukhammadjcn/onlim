@@ -393,7 +393,7 @@
             </button>
           </div>
         </div>
-        <div class="popularCourses__box row">
+        <div class="popularCourses__box row" v-if="!loading">
           <course
             v-for="(item, index) in coursesArr"
             :key="index"
@@ -402,6 +402,8 @@
             data-aos-once="true"
           />
         </div>
+
+        <Loading v-if="loading" />
       </div>
     </div>
 
@@ -414,6 +416,7 @@
 </template>
 
 <script>
+import Loading from "@/components/Loading.vue";
 import Course from "../components/Course.vue";
 import Email from "../components/Email.vue";
 import Footer from "../components/Footer.vue";
@@ -431,6 +434,7 @@ export default {
       isMenu: false,
       coursesArr: [],
       category: "?",
+      loading: false,
     };
   },
   components: {
@@ -438,6 +442,7 @@ export default {
     Course,
     Email,
     Footer,
+    Loading,
   },
   methods: {
     ChangeT(title) {
@@ -486,12 +491,14 @@ export default {
       this.category = "?category=3&";
       this.getCourse();
     },
-    getCourse() {
-      fetch(
-        `https://cors-anywhere.herokuapp.com/https://backend.eduon.uz/api-web/get-course/${this.category}page=1`
+    async getCourse() {
+      this.loading = true;
+      await fetch(
+        `https://thingproxy.freeboard.io/fetch/https://backend.eduon.uz/api-web/get-course/${this.category}page=1`
       )
         .then((response) => response.json())
         .then((data) => (this.coursesArr = data.data));
+      this.loading = false;
     },
   },
   mounted() {

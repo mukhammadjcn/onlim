@@ -47,8 +47,10 @@
       </div>
     </div>
 
+    <Loading v-if="loading" style="height: 80vh; align-items: center" />
+
     <!-- Wrapper bottom header, have Pagenation -->
-    <div class="section__wrapper">
+    <div class="section__wrapper" v-if="!loading">
       <div class="container row">
         <h2
           class="title"
@@ -56,9 +58,7 @@
           data-aos-once="true"
           data-aos-duration="1000"
         >
-          {{
-            singleReport.data.name ? singleReport.data.name : "Sarlovha yo'q"
-          }}
+          {{ singleReport.data.name }}
         </h2>
         <div
           class="pagesNav"
@@ -75,7 +75,7 @@
     </div>
 
     <!-- Main -->
-    <div class="singlePage__main">
+    <div class="singlePage__main" v-if="!loading">
       <div class="container row">
         <!-- Left side section (includes videos and information) -->
         <div
@@ -113,7 +113,11 @@
           <div class="singlePage__video">
             <iframe
               :src="
-                singleReport.data.trailer.url.split('watch?v=').join('embed/')
+                singleReport.data.trailer.url.includes('watch?v=')
+                  ? singleReport.data.trailer.url
+                      .split('watch?v=')
+                      .join('embed/')
+                  : singleReport.data.trailer.url
               "
               frameborder="0"
               v-if="singleReport.data.trailer.url"
@@ -531,6 +535,8 @@ import { store, mutations } from "../store";
 import Animation from "../../components/Animation.vue";
 import Footer from "../../components/Footer.vue";
 import Header from "../../components/Header.vue";
+import axios from "axios";
+import Loading from "@/components/Loading.vue";
 
 export default {
   name: "SingleReport",
@@ -538,11 +544,26 @@ export default {
     Header,
     Footer,
     Animation,
+    Loading,
   },
   data() {
     return {
-      singleReport: [],
+      singleReport: {
+        data: {
+          name: "",
+          author: {
+            full_name: "",
+          },
+          trailer: {
+            url: "",
+          },
+          videos: {
+            length: "",
+          },
+        },
+      },
       isMenu: false,
+      loading: false,
     };
   },
   computed: {
@@ -558,14 +579,13 @@ export default {
   },
   methods: {
     setCount: mutations.setCount,
-    fetchSingleNews() {
-      fetch(
-        `https://cors-anywhere.herokuapp.com/https://backend.eduon.uz/api-web/course-detail/?course_id=${this.$route.params.id}`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          this.singleReport = data;
-        });
+    async fetchSingleNews() {
+      this.loading = true;
+      const response = await axios.get(
+        `https://thingproxy.freeboard.io/fetch/https://backend.eduon.uz/api-web/course-detail/?course_id=${this.$route.params.id}`
+      );
+      this.singleReport = response.data;
+      this.loading = false;
     },
     postTime(d) {
       const date = new Date(d);

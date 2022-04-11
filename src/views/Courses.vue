@@ -239,7 +239,9 @@
 
     <!-- Courses List -->
     <div class="courses__list">
-      <div class="container row">
+      <Loading v-if="loading" />
+
+      <div class="container row" v-if="!loading">
         <course
           v-for="(item, index) in coursesArr"
           :key="index"
@@ -252,16 +254,24 @@
 
       <div class="container row">
         <div class="pagenation row">
-          <span :class="page == 1 ? 'pagenation__active' : ''" @click="page1"
+          <span
+            :class="page == 1 ? 'pagenation__active' : ''"
+            @click="selectPage(1)"
             >1</span
           >
-          <span :class="page == 2 ? 'pagenation__active' : ''" @click="page2"
+          <span
+            :class="page == 2 ? 'pagenation__active' : ''"
+            @click="selectPage(2)"
             >2</span
           >
-          <span :class="page == 3 ? 'pagenation__active' : ''" @click="page3"
+          <span
+            :class="page == 3 ? 'pagenation__active' : ''"
+            @click="selectPage(3)"
             >3</span
           >
-          <span :class="page == 4 ? 'pagenation__active' : ''" @click="page4"
+          <span
+            :class="page == 4 ? 'pagenation__active' : ''"
+            @click="selectPage(4)"
             >4</span
           >
           <span>...</span>
@@ -279,6 +289,7 @@ import Animation from "../components/Animation.vue";
 import Course from "../components/Course.vue";
 import Footer from "../components/Footer.vue";
 import Header from "../components/Header.vue";
+import Loading from "@/components/Loading.vue";
 
 export default {
   name: "Courses",
@@ -287,6 +298,7 @@ export default {
     Footer,
     Course,
     Animation,
+    Loading,
   },
   data() {
     return {
@@ -294,6 +306,7 @@ export default {
       coursesArr: [],
       page: 1,
       isMenu: false,
+      loading: false,
     };
   },
   methods: {
@@ -310,34 +323,17 @@ export default {
     showFilter() {
       this.isFilter = !this.isFilter;
     },
-    getCourse() {
-      fetch(
-        `https://cors-anywhere.herokuapp.com/https://backend.eduon.uz/api-web/get-course/?page=${this.page}`
+    async getCourse() {
+      this.loading = true;
+      await fetch(
+        `https://thingproxy.freeboard.io/fetch/https://backend.eduon.uz/api-web/get-course/?page=${this.page}`
       )
         .then((response) => response.json())
         .then((data) => (this.coursesArr = data.data));
+      this.loading = false;
     },
-    page1() {
-      this.page = 1;
-      this.getCourse();
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-      console.log(this.coursesArr);
-    },
-    page2() {
-      this.page = 2;
-      this.getCourse();
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-    },
-    page3() {
-      this.page = 3;
-      this.getCourse();
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-    },
-    page4() {
-      this.page = 4;
+    selectPage(page) {
+      this.page = page;
       this.getCourse();
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
